@@ -3,7 +3,7 @@
 #include <string.h>
 #include <sys/stat.h>
 
-#define MAX_SIZE_STRING 1024;
+#define MAX_SIZE_STRING 1024
 
 int fsize (char filename []);
 
@@ -11,21 +11,30 @@ int main(int argc, char *argv[])
 {
     
     FILE *f;
-    char c; 
+    
+    // Declare an array of char to store.
+    char filename[MAX_SIZE_STRING]; 
 
     // Open the test file.
-    f = fopen("test.txt", "r");
+    strcpy (filename, argv[1]);
+    f = fopen(filename, "r");
     if(f == NULL)
     {
         printf("Error, Cannot open file.\n");
         exit(1);
     }
 
-    c = fgetc(f);
+    // Move the pointer the third character of the file name 
+    fseek(f, fsize(filename) - 1, SEEK_SET);
 
-    printf("File char is %c", c);
+    // Print character from the file.
+    printf("The character in the file is: %c", fgetc(f));
 
-    printf("File size is %d", fsize("test.txt"));
+    printf("\n");
+
+    // Print the size of the file.
+    printf("The file size is: %d", fsize(filename));
+
     return 0;
 }
 
