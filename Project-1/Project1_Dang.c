@@ -3,6 +3,8 @@
 #include <string.h>
 #include <sys/stat.h>
 
+#define MAX_SIZE_STRING 1024;
+
 int fsize (char filename []);
 
 int main(int argc, char *argv[])
@@ -19,9 +21,11 @@ int main(int argc, char *argv[])
         exit(1);
     }
 
-    printf("File size is %d", fsize("test.txt"));
+    c = fgetc(f);
 
-    
+    printf("File char is %c", c);
+
+    printf("File size is %d", fsize("test.txt"));
     return 0;
 }
 
