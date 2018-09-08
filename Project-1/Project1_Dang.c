@@ -21,7 +21,7 @@ int main(int argc, char *argv[])
     if(f == NULL)
     {
         printf("Error, Cannot open file.\n");
-        exit(1);
+        exit(-1);
     }
 
     // Move the pointer the third character of the file name 
