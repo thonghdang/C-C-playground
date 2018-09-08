@@ -11,11 +11,10 @@ int main(int argc, char *argv[])
 {
     
     FILE *f;
-    
-    // Declare an array of char to store.
     char filename[MAX_SIZE_STRING]; 
+    char begin, end;
+    int step, head_point, tail_point;
 
-    // Open the test file.
     strcpy (filename, argv[1]);
     f = fopen(filename, "r");
     if(f == NULL)
@@ -24,27 +23,47 @@ int main(int argc, char *argv[])
         exit(-1);
     }
 
-    // Move the pointer the third character of the file name 
-    fseek(f, fsize(filename) - 1, SEEK_SET);
+    // printf("Size %d\n", fsize(filename));
+    // head_point = fseek(f, 3, SEEK_SET);
+    // begin = fgetc(f);
+    // tail_point = fseek(f, fsize(filename) - 1, SEEK_SET);
+    // end = fgetc(f);
+    // printf("Head: %c\n", begin);
+    // printf("End: %c", end);
 
-    // Print character from the file.
-    printf("The character in the file is: %c", fgetc(f));
+    step = 1;
+    while (begin < end)
+    {
+        
+        fseek(f, step + 1, SEEK_SET);
+        begin = fgetc(f);
+        fseek(f, fsize(filename) - step, SEEK_SET);
+        end = fgetc(f);
+        step++;
+        printf("Head %c\t Tail %c\n", begin, end);
+        if (begin == end)
+        {
+            printf("This is a palindrome.");
+        }
+        else 
+        {
+            printf("This is not....")
+        }
+    }
 
-    printf("\n");
-
-    // Print the size of the file.
-    printf("The file size is: %d", fsize(filename));
-
-    return 0;
-}
+    exit(0);
+}  
+   
 
 int fsize (char filename[])
 {
     struct stat st;
 
-    if (stat(filename, &st)) {
+    if (stat(filename, &st))
+    {
         return -1;
     }
 
     return st.st_size;
 }
+
