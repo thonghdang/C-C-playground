@@ -13,7 +13,6 @@ int main(int argc, char *argv[])
     FILE *f;
     char filename[MAX_SIZE_STRING]; 
     char right_char, left_char;
-    int step;
 
     strcpy (filename, argv[1]);
     f = fopen(filename, "r");
@@ -23,32 +22,23 @@ int main(int argc, char *argv[])
         exit(-1);
     }
 
-    for (step = 0; step <= fsize(filename); step++)
+    int i;
+    for (i = 0; i < fsize(filename); i++)
     {
-        fseek(f, step, SEEK_SET);
-        left_char = fgetc(f);
-        printf("Left char: %c\n", left_char);
+      fseek(f, i, SEEK_SET);
+      left_char = fgetc(f);
+      fseek(f, fsize(filename)-1-i, SEEK_SET);
+      right_char = fgetc(f);
+      
+      if(left_char != right_char)
+      {
+	printf("%s is not a palindrome. It differs at characters %c and %c \n",
+		filename, left_char, right_char);
+	exit(-1);
+      }
+               
     }
-
-    // step = 0;
-    // while (step <= fsize(filename))
-    // {
-    //     fseek(f, step + 1, SEEK_SET);
-    //     left_char = fgetc(f);
-    //     fseek(f, fsize(filename) - 1 - step, SEEK_SET);
-    //     right_char = fgetc(f);
-    //     if (left_char != right_char)
-    //     {
-    //         printf("%s is not a palindrome. It is differs at char %c and %c", 
-    //                 filename, left_char, right_char);
-    //         exit(-1);
-    //     }
-    //     else {
-    //         step++;
-    //     }     
-    // }
-    // printf("%s is a palindrome", filename);
-    
+    printf("%s is a palindrome.\n", filename);
     exit(0);
 }  
    
