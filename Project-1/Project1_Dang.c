@@ -12,8 +12,8 @@ int main(int argc, char *argv[])
     
     FILE *f;
     char filename[MAX_SIZE_STRING]; 
-    char begin, end;
-    int step, head_point, tail_point;
+    char right_pos, left_pos;
+    int step;
 
     strcpy (filename, argv[1]);
     f = fopen(filename, "r");
@@ -23,34 +23,25 @@ int main(int argc, char *argv[])
         exit(-1);
     }
 
-    // printf("Size %d\n", fsize(filename));
-    // head_point = fseek(f, 3, SEEK_SET);
-    // begin = fgetc(f);
-    // tail_point = fseek(f, fsize(filename) - 1, SEEK_SET);
-    // end = fgetc(f);
-    // printf("Head: %c\n", begin);
-    // printf("End: %c", end);
-
-    step = 1;
-    while (begin < end)
+    step = 0;
+    while (step <= fsize(filename))
     {
-        
-        fseek(f, step + 1, SEEK_SET);
-        begin = fgetc(f);
+        fseek(f, step++, SEEK_SET);
+        right_pos = fgetc(f);
         fseek(f, fsize(filename) - step, SEEK_SET);
-        end = fgetc(f);
-        step++;
-        printf("Head %c\t Tail %c\n", begin, end);
-        if (begin == end)
+        left_pos = fgetc(f);
+        if (right_pos != left_pos)
         {
-            printf("This is a palindrome.");
+            printf("%s is not a palindrome. It is differs at char %c and %c", filename, right_pos, left_pos);
+            exit(-1);
         }
-        else 
-        {
-            printf("This is not....")
+        else {
+            step++;
         }
+        
     }
-
+    printf("%s is a palindrome", filename);
+    
     exit(0);
 }  
    
