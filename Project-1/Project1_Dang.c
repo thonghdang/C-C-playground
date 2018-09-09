@@ -10,13 +10,13 @@ int fsize (char filename []);
 int main(int argc, char *argv[])
 {
     
-    FILE *f;
+    FILE *fb;
     char filename[MAX_SIZE_STRING]; 
     char right_char, left_char;
 
     strcpy (filename, argv[1]);
-    f = fopen(filename, "r");
-    if(f == NULL)
+    fb = fopen(filename, "r");
+    if(fb == NULL)
     {
         printf("Error, Cannot open file.\n");
         exit(-1);
@@ -25,10 +25,10 @@ int main(int argc, char *argv[])
     int i;
     for (i = 0; i < fsize(filename); i++)
     {
-      fseek(f, i, SEEK_SET);
-      left_char = fgetc(f);
-      fseek(f, fsize(filename)-1-i, SEEK_SET);
-      right_char = fgetc(f);
+      fseek(fb, i, SEEK_SET);
+      left_char = fgetc(fb);
+      fseek(fb, fsize(filename)-1-i, SEEK_SET);
+      right_char = fgetc(fb);
       
       if(left_char != right_char)
       {
