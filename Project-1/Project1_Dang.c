@@ -1,3 +1,11 @@
+/*
+ * Name: Thong Dang.
+ * CS 250 - 01.
+ * Professor: Bob Matthews.
+ * Project 1.
+ * This program is used to determine if the entire contents of a text file is a single palindrome.
+ */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -13,33 +21,43 @@ int main(int argc, char *argv[])
     FILE *fb;
     char filename[MAX_SIZE_STRING]; 
     char right_char, left_char;
+    int left_pos;
 
-    strcpy (filename, argv[1]);
-    fb = fopen(filename, "r");
+    strcpy (filename, argv[1]); // Copy and store the file into the filename array.
+    
+    fb = fopen(filename, "r"); // Open the file in the filename array to read.
+    
+    // If the file is not exist, print the error message.
     if(fb == NULL)
     {
         printf("Error, Cannot open file.\n");
-        exit(-1);
+        exit(-1); // Terminate the program. 
     }
 
-    int i;
-    for (i = 0; i < fsize(filename); i++)
+    /* Run a loop through the file, compare characters read from the left and the
+       right  to see if they are the same. 
+     */
+    for (left_pos = 0; left_pos < fsize(filename); left_pos++)
     {
-      fseek(fb, i, SEEK_SET);
+      fseek(fb, left_pos, SEEK_SET);
       left_char = fgetc(fb);
-      fseek(fb, fsize(filename)-1-i, SEEK_SET);
+      fseek(fb, fsize(filename)-1-left_pos, SEEK_SET);
       right_char = fgetc(fb);
-      
+
+      /* If the left character is not the same with the right, return the error message
+	with the postition of the difference and terminate the program.
+       */ 
       if(left_char != right_char)
       {
-	printf("%s is not a palindrome. It differs at characters %c and %c \n",
-		filename, left_char, right_char);
-	exit(-1);
-      }
-               
+	printf("%s is not a palindrome. It differs at characters %d and %d.\n",
+	       filename, left_pos, fsize(filename)-1-left_pos);
+	exit(-1); // Terminate the program.
+      }               
     }
-    printf("%s is a palindrome.\n", filename);
-    exit(0);
+    
+    printf("%s is a palindrome.\n", filename); // Print the message if it is palindromic.
+   
+    exit(0); // Exit cleanly.
 }  
    
 
