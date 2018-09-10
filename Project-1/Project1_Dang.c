@@ -1,5 +1,6 @@
 /*
- * Name: Thong Dang.
+ * Author: Thong Dang.
+ * Date: 09/09/2018
  * CS 250 - 01.
  * Professor: Bob Matthews.
  * Project 1.
@@ -23,9 +24,11 @@ int main(int argc, char *argv[])
     char right_char, left_char;
     int left_pos;
 
-    strcpy (filename, argv[1]); // Copy and store the file into the filename array.
-    
-    fb = fopen(filename, "r"); // Open the file in the filename array to read.
+    // Copy and store the input file into the filename array.
+    strcpy (filename, argv[1]);
+
+    // Open and read in the file.
+    fb = fopen(filename, "r");
     
     // If the file is not exist, print the error message.
     if(fb == NULL)
@@ -45,17 +48,17 @@ int main(int argc, char *argv[])
       right_char = fgetc(fb);
 
       /* If the left character is not the same with the right, return the error message
-	with the postition of the difference and terminate the program.
+	with the postition of the differences and terminate the program.
        */ 
       if(left_char != right_char)
       {
 	printf("%s is not a palindrome. It differs at characters %d and %d.\n",
-	       filename, left_pos, fsize(filename)-1-left_pos);
+	        filename, left_pos, fsize(filename)-1-left_pos);
 	exit(-1); // Terminate the program.
       }               
     }
     
-    printf("%s is a palindrome.\n", filename); // Print the message if it is palindromic.
+    printf("%s is a palindrome.\n", filename);
    
     exit(0); // Exit cleanly.
 }  
