@@ -1,0 +1,22 @@
+/* Module of the dictionary */
+
+// Pre-processor directives
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+#include "dictionary.h"
+
+int words_num;
+char dictionary[MAX_LINES][30];
+
+void create_dict (char *dict_name)
+{
+  words_num = 0;
+  
+  FILE *dict;
+  dict = fopen (dict_name, "r");  
+  while (fgets (dictionary[words_num], 30, dict)!= NULL) {
+    dictionary[words_num][strlen(dictionary[words_num])-1] = '\0';
+    words_num++; 
+  }
+}

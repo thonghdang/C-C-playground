@@ -1,0 +1,9 @@
+/* Declaring some constants */
+#define MAX_LINES 52875
+#define MAX_WORD_LEN 30
+
+#define MIN(x,y) (((x)<(y))?(x):(y))
+
+void create_dict(char *);
+
+unsigned int distance (const char *, const char *);

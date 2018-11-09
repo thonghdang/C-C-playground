@@ -1,0 +1,152 @@
+
+/* Long Tran
+ * October 27th, 2018
+ * Project 2: A Simple Spell-Checker
+ * Program that serve as a simple spell checker
+ */
+
+/* Pre-processor directives */
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+#include "dictionary.h"
+
+
+/* Declaring constants */
+#define MAX_LINE_LENGTH 1024
+#define MAX_WORD_SIZE 100
+#define MIN(a,b) (((a)<(b))?(a):(b))
+
+
+/* Declaring function prototype */
+unsigned int distance (const char *a, const char *b);
+
+
+/* Main program */
+int main ()
+{
+  extern int words_num;
+  extern char dictionary[MAX_LINES][MAX_WORD_LEN];
+
+  // Create the dictionary in a 2D array
+  create_dict ("dictionary.txt");
+  char line[MAX_LINE_LENGTH];
+  printf ("Enter a string: ");
+
+  // Take user's input
+  fgets (line, MAX_LINE_LENGTH, stdin);
+  line[strlen(line)-1] = '\0';
+  char * word;
+  word = strtok (line, " ");
+  int min_dist= 100;
+  int i;
+  char*correct_word;
+  
+  // Spellcheck the first word of input
+  //for (i=0; i<words_num; i++) {
+    
+    // First case, the word is in the dictionary            
+    //if ((distance(dictionary[i], word))==0)
+  //{
+  //correct_word=word;
+  //break;
+  //} 
+  //else
+	
+  //{
+	//Second case, correct the wrong word
+	//int dist = distance (word, dictionary[i]);
+	    
+	//if (dist < min_dist) {
+  //min_dist = dist;
+  //correct_word=dictionary[i];
+  //}
+  //}
+  
+  //}
+  //if (correct_word == word) {
+  //printf("%s ",correct_word);
+  //} else {
+  //printf ("*%s* ", correct_word);
+  //}
+ 
+  // Spellcheck the rest of the input
+  while ((word != NULL)
+    { 
+      int min_dist= 100;
+      int i;
+      char*correct_word;
+      for (i=0; i<words_num; i++) {
+                
+	if ((distance(dictionary[i], word))==0)
+	  {
+	    correct_word=word;
+	    
+	    break;
+	  } 
+	else
+	{
+	    int dist = distance (word, dictionary[i]);
+	    
+	    if (dist < min_dist) {
+	      min_dist = dist;
+	      correct_word=dictionary[i];
+	    }
+	  }
+  
+      }
+      if (correct_word == word) {
+	printf("%s ",correct_word);
+      } else {
+	printf ("*%s* ", correct_word);
+      }
+      word = strtok (NULL, " ");
+    }
+}
+
+
+/* Calculate the Levenstein distance between a and b. */
+unsigned int distance (const char *a, const char *b)
+{
+  unsigned int a_len = strlen(a);
+  unsigned int b_len = strlen(b);
+  /* The base case occurs when one string is empty. */
+  if (a_len == 0) {
+    return b_len;
+  }
+  if (b_len == 0) {
+    return a_len;
+  }
+  /* The recursive case. Construct new strings representing the head
+     of each string, by truncating the last char of the strings. */
+  char a_head[MAX_WORD_SIZE], b_head[MAX_WORD_SIZE];
+  strcpy (a_head, a);
+  strcpy (b_head, b);
+  /* Truncate string length by 1. */
+  a_head[a_len - 1] = '\0';
+  b_head[b_len - 1] = '\0';
+  
+  int head_dist;
+  /* Calculate the distance between the heads. */
+  if (a[a_len - 1] == b[b_len - 1]) {
+    head_dist = distance (a_head, b_head);
+  } else {
+    head_dist = 1 + distance (a_head, b_head);
+  }
+  /* Now, calculate the distance between each string and the head of
+     the other. */
+  int ahead2b_dist = 1 + distance (a_head, b);
+  int bhead2a_dist = 1 + distance (a, b_head);
+  /* The Levenshtein distance is the minimum of these three quantities.
+     MIN is a macro. You ll need to write this. */
+  return MIN(head_dist, MIN(ahead2b_dist, bhead2a_dist));
+}
+
+      
+
+
+
+  
+       
+            	 
+
