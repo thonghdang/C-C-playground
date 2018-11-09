@@ -10,7 +10,7 @@
 #define MAX_WORD_SIZE 100
 
 /* Define macro to calculate the distance. */
-#define MIN(x,y) (((x)<(y))?(x):(y))
+// #define MIN(x,y) (((x)<(y))?(x):(y))
 
 /* Some function prototypes. */
 void make_dict(char *);
