@@ -6,7 +6,7 @@
 #include <stdlib.h>
 #include "dictionary.h"
 
-static int words_num;
+int words_num;
 char dictionary[MAX_LINES][MAX_WORD_LEN];
 
 void make_dict (char *dict_name)
@@ -15,7 +15,7 @@ void make_dict (char *dict_name)
   
   FILE *dict;
   dict = fopen (dict_name, "r");  
-  while (fgets (dictionary[words_num], MAX_WORD_LEN, dict)!= NULL) {
+  while (fgets (dictionary[words_num], 30, dict)!= NULL) {
     dictionary[words_num][strlen(dictionary[words_num])-1] = '\0';
     words_num++; 
   }

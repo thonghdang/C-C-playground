@@ -3,7 +3,7 @@
  * Project 2: A Simple Spell-Checker
  * Author: Thong Dang
  * Date: November 7th, 2018
- * Description: This program is a simple spell check user input.
+ * Description: This program spell check user input.
  */
 
 #include <stdio.h>
@@ -11,7 +11,7 @@
 #include <stdlib.h>
 #include "dictionary.h"
 
-int number_of_words;
+//int words_num;
 char dictionary[MAX_LINES][MAX_WORD_LEN];
 
 /* Main module */
@@ -37,11 +37,10 @@ int main ()
   unchecked_words = strtok (input, " ");
 
   
- 
   while (unchecked_words != NULL) 
   { 
     min_distance = MAX_WORD_SIZE;
-    for (i=0; i < number_of_words; i++) 
+    for (i = 0; i < MAX_LINES; i++) 
     {
       if ((distance(dictionary[i], unchecked_words))==0) 
       {
@@ -71,6 +70,8 @@ int main ()
     // Get to the next words.
     unchecked_words = strtok (NULL, " ");
   }
+
+  printf(" \n");
 }
 
 

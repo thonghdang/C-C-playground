@@ -2,7 +2,7 @@
 //#define MAX_LINES 52875
 //#define MAX_WORD_LEN 30
 
-#define MAX_LINES 50
+#define MAX_LINES 12
 #define MAX_WORD_LEN 30
 
 #define MAX_LINE_LENGTH 1024
