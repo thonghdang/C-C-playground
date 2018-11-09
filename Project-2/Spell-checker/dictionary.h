@@ -12,4 +12,6 @@
 
 void make_dict(char *);
 
+void spell_check(char *);
+
 unsigned int distance (const char *, const char *);

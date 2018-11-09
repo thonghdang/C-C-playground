@@ -9,7 +9,7 @@ static int number_of_words;
 char dict_array[MAX_LINES][MAX_WORD_LEN];
 
 /* Function to read dictionary into 2D array*/
-void make_dict (char *dict_name)
+void make_dict (char * dict_name)
 {
   number_of_words = 0;
   
@@ -21,6 +21,55 @@ void make_dict (char *dict_name)
     number_of_words++; 
   }
 }
+
+
+void spell_check (char * input)
+{
+  char * unchecked_words;
+  char * correct_words;
+  int i;
+  int min_distance;
+
+  unchecked_words = strtok (input, " ");
+
+  while (unchecked_words != NULL) 
+  { 
+    min_distance = MAX_WORD_SIZE;
+    for (i = 0; i < MAX_LINES; i++) 
+    {
+      if ((distance(dict_array[i], unchecked_words))==0) 
+      {
+        correct_words= unchecked_words;
+        break;
+      } 
+      else 
+      {
+        int dist = distance (unchecked_words, dict_array[i]);
+
+        if (dist < min_distance) {
+	        min_distance = dist;
+	        correct_words =dict_array[i];
+        }
+	    }
+    }
+
+    if (correct_words == unchecked_words)
+    {
+      printf("%s ",correct_words);
+    } 
+    else 
+    {
+      printf ("*%s* ", correct_words);
+    }
+      
+    /* Get to the next words. */
+    unchecked_words = strtok (NULL, " ");
+  }
+
+}
+
+
+
 
 /* Calculate the Levenstein distance between a and b. */
 unsigned int distance (const char *a, const char *b)
