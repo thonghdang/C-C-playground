@@ -12,3 +12,6 @@ all:	main
 
 clean:	
 	rm -f dictionary.o main.o spellchecker
+
+tarball:	main.c dictionary.c dictionary.h Makefile
+	tar -c spellchecker.tar main.c dictionary.c dictionary.h Makefile
