@@ -11,6 +11,9 @@
 #include <stdlib.h>
 #include "dictionary.h"
 
+/* Define macro to calculate the distance. */
+#define MIN(x,y) (((x)<(y))?(x):(y))
+
 static int number_of_words;
 char dict_array[MAX_DICT_LINES][MAX_WORD_LEN];
 
