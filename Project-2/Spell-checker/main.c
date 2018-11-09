@@ -20,15 +20,14 @@ int main ()
   make_dict ("dictionary.txt");
 
   char input[MAX_LINE_LENGTH];
-  printf ("Enter a string: ");
+  printf ("Input a string of character: ");
 
   /* Prompt user input and store into array. */
   fgets (input, MAX_LINE_LENGTH, stdin);
   input[strlen(input)-1] = '\0';
 
+  /* Perform spell check on the input */
   spell_check (input);
-  
-  printf(" \n");
 }
 
 

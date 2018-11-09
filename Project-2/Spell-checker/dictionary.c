@@ -6,7 +6,7 @@
 #include "dictionary.h"
 
 static int number_of_words;
-char dict_array[MAX_LINES][MAX_WORD_LEN];
+char dict_array[MAX_DICT_LINES][MAX_WORD_LEN];
 
 /* Function to read dictionary into 2D array*/
 void make_dict (char * dict_name)
@@ -22,27 +22,28 @@ void make_dict (char * dict_name)
   }
 }
 
+/* Function to spell check the user input.*/
 void spell_check (char * input)
 {
-  char * unchecked_words;
+  char * tokenized_words;
   char * correct_words;
   int i;
   int min_distance;
 
-  unchecked_words = strtok (input, " ");
-  while (unchecked_words != NULL) 
+  tokenized_words = strtok (input, " ");
+  while (tokenized_words != NULL) 
   { 
     min_distance = MAX_WORD_SIZE;
-    for (i = 0; i < MAX_LINES; i++) 
+    for (i = 0; i < MAX_DICT_LINES; i++) 
     {
-      if ((distance(dict_array[i], unchecked_words))==0) 
+      if ((distance(dict_array[i], tokenized_words))==0) 
       {
-        correct_words= unchecked_words;
+        correct_words= tokenized_words;
         break;
       } 
       else 
       {
-        int dist = distance (unchecked_words, dict_array[i]);
+        int dist = distance (tokenized_words, dict_array[i]);
 
         if (dist < min_distance) {
 	        min_distance = dist;
@@ -51,7 +52,7 @@ void spell_check (char * input)
 	    }
     }
 
-    if (correct_words == unchecked_words)
+    if (correct_words == tokenized_words)
     {
       printf("%s ",correct_words);
     } 
@@ -61,12 +62,10 @@ void spell_check (char * input)
     }
       
     /* Get to the next words. */
-    unchecked_words = strtok (NULL, " ");
+    tokenized_words = strtok (NULL, " ");
   }
-
+  printf(" \n");
 }
-
-
 
 
 /* Calculate the Levenstein distance between a and b. */
