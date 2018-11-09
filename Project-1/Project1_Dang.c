@@ -3,8 +3,9 @@
  * Date: 09/09/2018
  * CS 250 - 01.
  * Professor: Bob Matthews.
- * Project 1.
- * This program is used to determine if the entire contents of a text file is a single palindrome.
+ * Project 1: Detecting Palindromic Files.
+ * This program is used to determine if the entire contents of a text file is a 
+ single palindrome or not.
  */
 
 #include <stdio.h>
@@ -38,7 +39,7 @@ int main(int argc, char *argv[])
     }
 
     /* Run a loop through the file, compare characters read from the left and the
-       right  to see if they are the same. 
+       right to see if they are the same. 
      */
     for (left_pos = 0; left_pos < fsize(filename); left_pos++)
     {
@@ -47,7 +48,7 @@ int main(int argc, char *argv[])
       fseek(fb, fsize(filename)-1-left_pos, SEEK_SET);
       right_char = fgetc(fb);
 
-      /* If the left character is not the same with the right, return the error message
+      /* If the left character is not the same with the right, print the error message
 	with the postition of the differences and terminate the program.
        */ 
       if(left_char != right_char)
