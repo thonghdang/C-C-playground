@@ -12,8 +12,6 @@
 #include "dictionary.h"
 
 
-char dict_array[MAX_LINES][MAX_WORD_LEN];
-
 /* Main module */
 int main ()
 {
@@ -29,50 +27,7 @@ int main ()
   input[strlen(input)-1] = '\0';
 
   spell_check (input);
-
-  // char * unchecked_words;
-  // int min_distance;
-  // int i;
-  // char * correct_words;
-
-  // /* Extract word by word from user input. */
-  // unchecked_words = strtok (input, " ");
-
   
-  // while (unchecked_words != NULL) 
-  // { 
-  //   min_distance = MAX_WORD_SIZE;
-  //   for (i = 0; i < MAX_LINES; i++) 
-  //   {
-  //     if ((distance(dict_array[i], unchecked_words))==0) 
-  //     {
-  //       correct_words= unchecked_words;
-  //       break;
-  //     } 
-  //     else 
-  //     {
-  //       int dist = distance (unchecked_words, dict_array[i]);
-
-  //       if (dist < min_distance) {
-	//         min_distance = dist;
-	//         correct_words =dict_array[i];
-  //       }
-	//     }
-  //   }
-
-  //   if (correct_words == unchecked_words)
-  //   {
-  //     printf("%s ",correct_words);
-  //   } 
-  //   else 
-  //   {
-  //     printf ("*%s* ", correct_words);
-  //   }
-      
-  //   /* Get to the next words. */
-  //   unchecked_words = strtok (NULL, " ");
-  // }
-
   printf(" \n");
 }
 

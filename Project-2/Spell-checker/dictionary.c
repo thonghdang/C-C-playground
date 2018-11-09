@@ -22,7 +22,6 @@ void make_dict (char * dict_name)
   }
 }
 
-
 void spell_check (char * input)
 {
   char * unchecked_words;
@@ -31,7 +30,6 @@ void spell_check (char * input)
   int min_distance;
 
   unchecked_words = strtok (input, " ");
-
   while (unchecked_words != NULL) 
   { 
     min_distance = MAX_WORD_SIZE;
