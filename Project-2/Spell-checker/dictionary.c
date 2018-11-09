@@ -1,23 +1,24 @@
-/* Module of the dictionary */
+/* Dictionary module */
 
-// Pre-processor directives
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
 #include "dictionary.h"
 
-static int words_num;
-char dictionary[MAX_LINES][MAX_WORD_LEN];
+static int number_of_words;
+static char dict_array[MAX_LINES][MAX_WORD_LEN];
 
+/* Function to read dictionary into 2D array*/
 void make_dict (char *dict_name)
 {
-  words_num = 0;
+  number_of_words = 0;
   
-  FILE *dict;
-  dict = fopen (dict_name, "r");  
-  while (fgets (dictionary[words_num], MAX_WORD_LEN, dict)!= NULL) {
-    dictionary[words_num][strlen(dictionary[words_num])-1] = '\0';
-    words_num++; 
+  FILE * file_dict;
+  file_dict = fopen (dict_name, "r");  
+
+  while (fgets (dict_array[number_of_words], MAX_WORD_LEN, file_dict)!= NULL) {
+    dict_array[number_of_words][strlen(dict_array[number_of_words])-1] = '\0';
+    number_of_words++; 
   }
 }
 
