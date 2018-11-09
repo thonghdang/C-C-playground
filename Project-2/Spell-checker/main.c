@@ -10,21 +10,24 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+
 #include "dictionary.h"
 
+/* Declare constant to store user input.*/
+#define MAX_LINE_INPUT 1024
 
 /* Main module */
 int main ()
 {
 
   /* Read the dictionary into array. */
-  make_dict ("dictionary.txt");
+  make_dict ("/usr/share/dict/cracklib-small");
 
-  char input[MAX_LINE_LENGTH];
+  char input[MAX_LINE_INPUT];
   printf ("Input a string of character: ");
 
   /* Prompt user input and store into array. */
-  fgets (input, MAX_LINE_LENGTH, stdin);
+  fgets (input, MAX_LINE_INPUT, stdin);
   input[strlen(input)-1] = '\0';
 
   /* Perform spell check on the input */

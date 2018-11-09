@@ -1,6 +1,6 @@
 # Makefile for spell checker
-spellchecker:	main.o dictionary.o
-	gcc -o spellchecker main.o dictionary.o
+spellcheck:	main.o dictionary.o 
+	gcc -o spellcheck main.o dictionary.o
 
 main.o:	  main.c dictionary.h
 	gcc -c -Wall --pedantic main.c
@@ -8,17 +8,13 @@ main.o:	  main.c dictionary.h
 dictionary.o:	dictionary.c dictionary.h
 	gcc -c -Wall --pedantic dictionary.c
 
-all:	main
+all:	spellcheck
 
 clean:	
-	rm -f dictionary.o main.o spellchecker
+	rm -f dictionary.o main.o spellcheck spellcheck.tar
 
-<<<<<<< HEAD
 tarball:    main.c dictionary.c dictionary.h Makefile
-	tar -c -f main.tar main.c dictionary.c dictionary.h Makefile
+	tar -cf spellcheck.tar main.c dictionary.c dictionary.h Makefile
 
 
-=======
-tarball:	main.c dictionary.c dictionary.h Makefile
-	tar -c spellchecker.tar main.c dictionary.c dictionary.h Makefile
->>>>>>> c63127e7d48b3fcafe4530ea89a0033cce685538
+

@@ -11,8 +11,17 @@
 #include <stdlib.h>
 #include "dictionary.h"
 
+/* Declare some constants to store dictionary. */
+#define MAX_DICT_LINES 52875
+#define MAX_WORD_LEN 30
+
+/* Declare a constant that is used for spellchecking*/
+#define MAX_WORD_SIZE 100
+
 /* Define macro to calculate the distance. */
 #define MIN(x,y) (((x)<(y))?(x):(y))
+
+
 
 static int number_of_words;
 char dict_array[MAX_DICT_LINES][MAX_WORD_LEN];
@@ -21,7 +30,8 @@ char dict_array[MAX_DICT_LINES][MAX_WORD_LEN];
 void make_dict (char * dict_name)
 {
   number_of_words = 0;
-  
+
+/* Open dictionary file for reading. */
   FILE * file_dict;
   file_dict = fopen (dict_name, "r");  
 
@@ -50,12 +60,14 @@ void spell_check (char * input)
     min_distance = MAX_WORD_SIZE;
     for (i = 0; i < MAX_DICT_LINES; i++) 
     {
-      /* The case when the unchecked word is in the dictionary. */
+      /* The case when the unchecked words are in the dictionary. */
       if ((distance(dict_array[i], tokenized_words))==0) 
       {
         correct_words= tokenized_words;
         break;
-      } 
+      }
+
+      /* The case when unchecked words are not in the dictionary.  */
       else 
       {
         int dist = distance (tokenized_words, dict_array[i]);
