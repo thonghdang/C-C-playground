@@ -1,6 +1,6 @@
 # Makefile for spell checker
-main:	main.o dictionary.o
-	gcc -o main main.o dictionary.o
+spellchecker:	main.o dictionary.o
+	gcc -o spellchecker main.o dictionary.o
 
 main.o:	  main.c dictionary.h
 	gcc -c -Wall --pedantic main.c
@@ -11,4 +11,4 @@ dictionary.o:	dictionary.c dictionary.h
 all:	main
 
 clean:	
-	rm -f dictionary.o main.o main
+	rm -f dictionary.o main.o spellchecker
