@@ -1,4 +1,10 @@
-/* Dictionary module */
+/* CS 250
+ * Project 2: A Simple Spell-Checker
+ * Author: Thong Dang
+ * Date: November 7th, 2018
+ * Description: This program checks user input spelling words.
+ * Dictionary module.
+ */
 
 #include <stdio.h>
 #include <string.h>
@@ -16,7 +22,9 @@ void make_dict (char * dict_name)
   FILE * file_dict;
   file_dict = fopen (dict_name, "r");  
 
-  while (fgets (dict_array[number_of_words], MAX_WORD_LEN, file_dict)!= NULL) {
+  /* Read words by words in the dictionary file into 2D array. */
+  while (fgets (dict_array[number_of_words], MAX_WORD_LEN, file_dict)!= NULL) 
+  {
     dict_array[number_of_words][strlen(dict_array[number_of_words])-1] = '\0';
     number_of_words++; 
   }
@@ -30,12 +38,16 @@ void spell_check (char * input)
   int i;
   int min_distance;
 
+  /* Use strtok to extract words by words. */
   tokenized_words = strtok (input, " ");
+
+  /* Run a loop through each word to spell check. */
   while (tokenized_words != NULL) 
   { 
     min_distance = MAX_WORD_SIZE;
     for (i = 0; i < MAX_DICT_LINES; i++) 
     {
+      /* The case when the unchecked word is in the dictionary. */
       if ((distance(dict_array[i], tokenized_words))==0) 
       {
         correct_words= tokenized_words;
@@ -47,7 +59,7 @@ void spell_check (char * input)
 
         if (dist < min_distance) {
 	        min_distance = dist;
-	        correct_words =dict_array[i];
+	        correct_words = dict_array[i];
         }
 	    }
     }

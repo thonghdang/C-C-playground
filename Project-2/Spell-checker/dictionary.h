@@ -1,10 +1,11 @@
-/* Declaring some constants for reading dictionary */
-#define MAX_DICT_LINES 52875
+/* Declaring some constants for storing dictionary */
+// #define MAX_DICT_LINES 52875
+// #define MAX_WORD_LEN 30
+
+#define MAX_DICT_LINES 12
 #define MAX_WORD_LEN 30
 
-// #define MAX_DICT_LINES 12
-// #define MAX_WORD_LEN 30
-/* Declaring some constants for user input. */
+/* Declaring some constants for storing user input. */
 #define MAX_LINE_LENGTH 1024
 #define MAX_WORD_SIZE 100
 

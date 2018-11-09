@@ -4,6 +4,7 @@
  * Author: Thong Dang
  * Date: November 7th, 2018
  * Description: This program checks user input spelling words.
+ * Main module.
  */
 
 #include <stdio.h>
@@ -28,6 +29,8 @@ int main ()
 
   /* Perform spell check on the input */
   spell_check (input);
+
+  return 0;
 }
 
 
