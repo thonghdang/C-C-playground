@@ -6,7 +6,7 @@
 #include "dictionary.h"
 
 static int number_of_words;
-static char dict_array[MAX_LINES][MAX_WORD_LEN];
+char dict_array[MAX_LINES][MAX_WORD_LEN];
 
 /* Function to read dictionary into 2D array*/
 void make_dict (char *dict_name)
