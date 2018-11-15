@@ -48,7 +48,7 @@ void initiate_snippet_count(FILE* f)
     }   
 }
 
-void list_snippet (struct person * person_list[])
+void list_snippet (struct person * person_list[MAX_SNIPPET_LEN])
 {
     int i;
     for (i = 0; i < person_count; i++) {
@@ -58,7 +58,6 @@ void list_snippet (struct person * person_list[])
         printf("%s %s\n", person_list[i]->state, person_list[i]->zip_code);
         printf("\n");
     }
-    return 1;
 }
 
 
