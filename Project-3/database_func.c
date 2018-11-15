@@ -4,7 +4,8 @@
 
 #include "database_func.h"
 
-#define MAX_SNIPPETS 100
+#define MAX_SNIPPETS_NUM 100 
+#define MAX_SNIPPET_LEN 100
 
 
 struct person {
@@ -15,14 +16,31 @@ struct person {
     char *zip_code;
 };
 
-static struct person *person_list[MAX_SNIPPETS];
+static struct person *person_list[MAX_SNIPPETS_NUM];
 static int person_count;
+char snippets_arr[MAX_SNIPPETS_NUM][MAX_SNIPPET_LEN];
+
+void read_snippets (FILE *f)
+{
+    int snippets_num;
+
+    snippets_num = 0;
+    while ( fgets(snippets_arr[snippets_num], MAX_SNIPPET_LEN, f) == NULL) {
+        snippets_arr[snippets_num][strlen(snippets_arr[snippets_num]) - 1] = '\0';
+        snippets_num ++;
+    }
+}
+
+void snippet_to_struct (char arr[MAX_SNIPPETS_NUM][MAX_SNIPPET_LEN])
+{
+    int i;
+    
+}
 
 void initiate_snippet_count(FILE* f)
 {
-    char temp[MAX_SNIPPETS];
-    if ( (fgets(temp, MAX_SNIPPETS, f)) == NULL)
-    {
+    char temp[MAX_SNIPPETS_NUM];
+    if ( (fgets(temp, MAX_SNIPPETS_NUM, f)) == NULL) {
         printf("There is no snippet numbers in file. \n");
         person_count = 0;
     } else {
@@ -33,8 +51,7 @@ void initiate_snippet_count(FILE* f)
 int list_snippet (struct person * person_list[])
 {
     int i;
-    for (i = 0; i < person_count; i++)
-    {
+    for (i = 0; i < person_count; i++) {
         printf("%s\n", person_list[i]->name);
         printf("%s\n", person_list[i]->street_address);
         printf("%s, ", person_list[i]->city);
