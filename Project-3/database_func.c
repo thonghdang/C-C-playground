@@ -48,7 +48,7 @@ void initiate_snippet_count(FILE* f)
     }   
 }
 
-int list_snippet (struct person * person_list[])
+void list_snippet (struct person * person_list[])
 {
     int i;
     for (i = 0; i < person_count; i++) {
