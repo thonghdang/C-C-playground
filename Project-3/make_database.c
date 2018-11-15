@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-//#include "database_func.h"
+#include "database_func.h"
 
 char snippets_num[10];
 int num_snippet;
@@ -19,10 +19,6 @@ int main (int argc, char *argv[])
     exit (-1);
     }
 
-    
-
-
-    
 
     return 0;
 }
