@@ -11,6 +11,3 @@ all: database
 
 clean: 
 	rm -f make_database.o database_func.o database database.tar
-
-tarball:	make_database.c database_func.c database_func.h Makefile
-	tar -cf database.tar make_database.c database_func.c database_func.h Makefile
