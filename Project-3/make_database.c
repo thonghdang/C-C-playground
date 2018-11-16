@@ -38,3 +38,4 @@ int main (int argc, char *argv[])
         printf("%s\n", snippets_arr[snippets_num]);
         snippets_num++;
     }
+}
