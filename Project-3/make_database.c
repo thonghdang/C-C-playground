@@ -10,6 +10,8 @@ char snippets_num[10];
 int num_snippet;
 char snippets_arr[MAX_SNIPPETS_NUM][MAX_SNIPPET_LEN];
 
+void read_snippets (FILE *);
+
 int main (int argc, char *argv[])
 {
     FILE *the_file;
