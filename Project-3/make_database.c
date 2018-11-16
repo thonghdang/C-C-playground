@@ -16,7 +16,7 @@ int main (int argc, char *argv[])
 {
     FILE *the_file;
     char *file_input = argv[1];
-    the_file = fopen(file_input, "r+");
+    the_file = fopen(file_input, "r");
 
     if (the_file == NULL) {
     /* Opening the file failed. */
