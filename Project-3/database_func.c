@@ -20,18 +20,18 @@ struct person *person_list[MAX_SNIPPETS_NUM];
 static int person_count;
 char snippets_arr[MAX_SNIPPETS_NUM][MAX_SNIPPET_LEN];
 
-void read_snippets (FILE *f)
-{
-    int snippets_num;
+// void read_snippets (FILE *f)
+// {
+//     int snippets_num;
 
-    snippets_num = 0;
-    while ( fgets(snippets_arr[snippets_num], MAX_SNIPPET_LEN, f) == NULL) {
-        snippets_arr[snippets_num][strlen(snippets_arr[snippets_num]) - 1] = '\0';
-        printf("%s\n", snippets_arr[snippets_num]);
-        snippets_num++;
-    }
+//     snippets_num = 0;
+//     while ( fgets(snippets_arr[snippets_num], MAX_SNIPPET_LEN, f) == NULL) {
+//         snippets_arr[snippets_num][strlen(snippets_arr[snippets_num]) - 1] = '\0';
+//         printf("%s\n", snippets_arr[snippets_num]);
+//         snippets_num++;
+//     }
 
-}
+// }
 
 void snippet_to_struct (char arr[MAX_SNIPPETS_NUM][MAX_SNIPPET_LEN])
 {
