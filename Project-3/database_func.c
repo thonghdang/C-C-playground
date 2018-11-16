@@ -27,13 +27,8 @@ void read_snippets (FILE *f)
     snippets_num = 0;
     while ( fgets(snippets_arr[snippets_num], MAX_SNIPPET_LEN, f) == NULL) {
         snippets_arr[snippets_num][strlen(snippets_arr[snippets_num]) - 1] = '\0';
+        printf("%s\n", snippets_arr[snippets_num]);
         snippets_num++;
-    }
-
-    int i;
-    for (i = 0; i < snippets_num; i++)
-    {
-        printf("%s", snippets_arr[snippets_num]);
     }
 
 }
