@@ -16,7 +16,7 @@ struct person {
     char *zip_code;
 };
 
-static struct person *person_list[MAX_SNIPPETS_NUM];
+struct person *person_list[MAX_SNIPPETS_NUM];
 static int person_count;
 char snippets_arr[MAX_SNIPPETS_NUM][MAX_SNIPPET_LEN];
 
@@ -27,7 +27,7 @@ void read_snippets (FILE *f)
     snippets_num = 0;
     while ( fgets(snippets_arr[snippets_num], MAX_SNIPPET_LEN, f) == NULL) {
         snippets_arr[snippets_num][strlen(snippets_arr[snippets_num]) - 1] = '\0';
-        snippets_num ++;
+        snippets_num++;
     }
 }
 
@@ -48,7 +48,7 @@ void initiate_snippet_count(FILE* f)
     }   
 }
 
-void list_snippet (struct person * person_list[MAX_SNIPPET_LEN])
+void list_snippet (struct person *person_list[MAX_SNIPPET_LEN)
 {
     int i;
     for (i = 0; i < person_count; i++) {
