@@ -29,6 +29,13 @@ void read_snippets (FILE *f)
         snippets_arr[snippets_num][strlen(snippets_arr[snippets_num]) - 1] = '\0';
         snippets_num++;
     }
+
+    int i;
+    for (i = 0; i <= snippets_num; i++)
+    {
+        printf("%s", snippets_arr[snippets_num]);
+    }
+
 }
 
 void snippet_to_struct (char arr[MAX_SNIPPETS_NUM][MAX_SNIPPET_LEN])
