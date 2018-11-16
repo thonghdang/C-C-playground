@@ -31,7 +31,7 @@ void read_snippets (FILE *f)
     }
 
     int i;
-    for (i = 0; i <= snippets_num; i++)
+    for (i = 0; i < snippets_num; i++)
     {
         printf("%s", snippets_arr[snippets_num]);
     }
