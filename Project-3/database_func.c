@@ -48,17 +48,17 @@ void initiate_snippet_count(FILE* f)
     }   
 }
 
-void list_snippet (struct person * person_list[MAX_SNIPPET_LEN])
-{
-    int i;
-    for (i = 0; i < person_count; i++) {
-        printf("%s\n", person_list[i]->name);
-        printf("%s\n", person_list[i]->street_address);
-        printf("%s, ", person_list[i]->city);
-        printf("%s %s\n", person_list[i]->state, person_list[i]->zip_code);
-        printf("\n");
-    }
-}
+// void list_snippet (struct person * person_list[MAX_SNIPPET_LEN])
+// {
+//     int i;
+//     for (i = 0; i < person_count; i++) {
+//         printf("%s\n", person_list[i]->name);
+//         printf("%s\n", person_list[i]->street_address);
+//         printf("%s, ", person_list[i]->city);
+//         printf("%s %s\n", person_list[i]->state, person_list[i]->zip_code);
+//         printf("\n");
+//     }
+// }
 
 
 int add_snippet (char *name, char *street_address, char *city, char *state, char *zip_code)
