@@ -19,6 +19,8 @@ int main (int argc, char *argv[])
     exit (-1);
     }
 
+    void read_snippets(the_file);
+
 
     return 0;
 }
